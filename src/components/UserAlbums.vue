@@ -5,11 +5,12 @@
       Return to Users
       </router-link>
     </div>
-    <h1>User {{this.$route.params.id}}'s Albums</h1>
+    <h1>{{user.name}}'s Albums</h1>
     <ul v-for="album in albums" v-bind:key="album.id">
       <li>
         <router-link :to="{ name: 'AlbumPhotos', params: { id: album.id}}">
           {{album.title}}
+          (Album {{album.id}})
         </router-link>
       </li>
     </ul>
@@ -20,7 +21,8 @@
 export default {
   data () {
     return {
-      albums: []
+      albums: [],
+      user: {}
     }
   },
 
@@ -32,11 +34,20 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    async getUser () {
+      try {
+        let response = await fetch('https://jsonplaceholder.typicode.com/users/' + this.$route.params.id)
+        this.user = await response.json()
+      } catch (error) {
+        console.log(error)
+      }
     }
   },
 
   created () {
     this.getAlbums()
+    this.getUser()
   }
 }
 </script>

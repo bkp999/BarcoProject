@@ -13,11 +13,13 @@
       </div>
     </div>
     <h1>Album {{this.$route.params.id}}'s Photos</h1>
-    <ul v-for="photo in photos" v-bind:key="photo.id">
-      <li>
-        <img :src=photo.url>
-      </li>
-    </ul>
+    <table>
+      <tr v-for="i in parseInt(photos.length / 4 + 1)" v-bind:key="i">
+        <td v-for="photo in photos.slice((i-1)*4,(i-1)*4+4)" v-bind:key="photo.id">
+          <img :src=photo.thumbnailUrl>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -60,6 +62,10 @@ li {
 }
 a {
   color: #42b983;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
 }
 #navitem {
     text-align: left;
