@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <div id="navbar">
       <div id="navitem">
         <router-link :to="{ name: 'Users'}">
@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style scoped>
-h1, h2 {
+h1 {
   font-weight: normal;
 }
 ul {

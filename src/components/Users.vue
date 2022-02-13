@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <h1>Users</h1>
     <ul v-for="user in users" v-bind:key="user.id">
       <li>
@@ -39,7 +39,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1 {
   font-weight: normal;
 }
 ul {
